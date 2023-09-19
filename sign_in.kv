@@ -1,0 +1,78 @@
+MDScreen:
+    name:'signin'
+    id: main_win
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            source:"2.png"
+            size: root.width, root.height
+            pos: self.pos
+
+    MDFloatLayout:
+        MDFloatLayout:
+            size_hint:.3,.99
+            pos_hint:{'center_x':.5,'center_y':.15}
+            MDTextField:
+                id :username
+                hint_text: "Username"
+                hint_text_color_focus: "white"
+                hint_text_color_normal: "white"
+                mode: "fill"
+                font_size:'16sp'
+                text_color_focus: "#f2ddcc"
+                pos_hint:{'center_x':.5,'center_y':1}
+                fill_color_normal:'#525656'
+                fill_color_focus:'#525656'
+                line_color_focus: "white"
+
+            MDTextField:
+                id :password
+                hint_text: "Password"
+                hint_text_color_focus: "white"
+                hint_text_color_normal: "white"
+                mode: "fill"
+                font_size:'16sp'
+                password:True
+                text_color_focus: "#f2ddcc"
+                pos_hint:{'center_x':.5,'center_y':.8}
+                fill_color_normal:'#525656'
+                fill_color_focus:'#525656'
+                line_color_focus: "white"
+                
+            MDFillRoundFlatButton:
+                text:'CONTINUE'
+                md_bg_color: "#ae9371"
+                size_hint:.9,.065
+                pos_hint: {"center_x": .5, "center_y": .59}
+                font_size:'20sp'
+                on_release:
+                    root.manager.transition.direction='right'
+                    root.manager.current='home'
+
+            MDTextButton:
+                text: "Forgot Password?"
+                text_color: "white"
+                pos_hint: {"center_x": 1.425, "center_y": .65}
+                size_hint:1.2,0.65
+                font_size:'13sp'
+                on_release:
+                    root.manager.transition.direction='right'
+                    root.manager.current='password'
+            
+        MDFloatLayout:
+            size_hint:.3,.9
+            pos_hint:{'center_x':.327,'center_y':.48}
+            MDFillRoundFlatButton:
+                text: "Sign Up"
+                md_bg_color: "#ae9371"
+                text_color: "white"
+                pos_hint: {"center_x": .2, "center_y": .42}
+                size_hint:.99,.065
+                font_size:'20sp'
+                on_release:
+                    root.manager.transition.direction='left'
+                    root.manager.current='signup'
